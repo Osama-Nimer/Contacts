@@ -115,5 +115,9 @@ namespace bisnesseLayer
         {
             return clsDataLayer.GetAllContact();
         }
+
+        public static bool IsExist(int id) {
+            return clsDataLayer.IsExist(id);
+        }
     }
 }

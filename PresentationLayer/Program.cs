@@ -85,13 +85,23 @@ namespace PresentationLayer
                 Console.WriteLine($"{row["ContactID"]} , {row["FirstName"]} ,{row["LastName"]} ,{row["Phone"]}");
             }
         }
+
+        static void testIsContactExist(int id)
+        {
+            if (clsbisnesseLayer.IsExist(id))
+                Console.WriteLine("The Contact Is Exist");
+            else
+                Console.WriteLine("The Contact Is not Exist");
+            
+        }
             static void Main(string[] args)
             {
             //testFindContact(2);
             //testAddNewContact();
             //testUpdateContact(2);
             //testDeleteContact(8);
-            testDataTable();
+            //testDataTable();
+            testIsContactExist(20);
             }
         } 
     }

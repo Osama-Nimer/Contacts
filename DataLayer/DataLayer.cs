@@ -170,5 +170,31 @@ namespace DataLayer
             
             return dt;
         }
+
+        public static bool IsExist(int id)
+        {
+            bool IsExist= false;
+            SqlConnection connection= new SqlConnection(ConnString.ConnectionString);
+            string Query = "Select ContactID From Contacts where ContactID = @id";
+            SqlCommand command= new SqlCommand(Query,connection);
+            command.Parameters.AddWithValue ("id", id); 
+            try
+            {
+                connection.Open ();
+                SqlDataReader reader = command.ExecuteReader();
+
+                IsExist = reader.HasRows;
+
+                reader.Close ();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally {connection.Close(); }  
+            
+            return IsExist;
+        }
     }
 }
