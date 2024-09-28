@@ -75,12 +75,23 @@ namespace PresentationLayer
                 Console.WriteLine("Contact Deleted Successfully");
             else Console.WriteLine("Contact not Found");
         }
+
+        static void testDataTable()
+        {
+            DataTable dt = clsbisnesseLayer.GetAllContacts();
+            Console.WriteLine("Contacts Data");
+            foreach (DataRow row in dt.Rows)
+            {
+                Console.WriteLine($"{row["ContactID"]} , {row["FirstName"]} ,{row["LastName"]} ,{row["Phone"]}");
+            }
+        }
             static void Main(string[] args)
             {
-                //testFindContact(2);
-                //testAddNewContact();
-                //testUpdateContact(2);
-                testDeleteContact(8);
+            //testFindContact(2);
+            //testAddNewContact();
+            //testUpdateContact(2);
+            //testDeleteContact(8);
+            testDataTable();
             }
         } 
     }

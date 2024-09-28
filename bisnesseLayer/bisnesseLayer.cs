@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using DataLayer;
 namespace bisnesseLayer
 {
@@ -108,6 +109,11 @@ namespace bisnesseLayer
             }
 
             return false;
+        }
+
+        public static DataTable GetAllContacts()
+        {
+            return clsDataLayer.GetAllContact();
         }
     }
 }

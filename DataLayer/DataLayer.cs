@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Numerics;
 namespace DataLayer
 {
@@ -140,6 +141,34 @@ namespace DataLayer
             }
             finally { conn.Close(); }   
             return (rows > 0);
+        }
+
+        public static DataTable GetAllContact()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(ConnString.ConnectionString);
+            String Query = "Select * From Contacts";
+            SqlCommand command = new SqlCommand(Query,connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
+            return dt;
         }
     }
 }
