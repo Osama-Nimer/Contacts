@@ -134,6 +134,14 @@ namespace PresentationLayer
                 Console.WriteLine($"Country Added Successfully by ID = {country.CountryID}");
 
         }
+
+        static void testDeleteCountry(int ID)
+        {
+            if (clsCountriesBusiness._DeleteCountry(ID))
+                Console.WriteLine("Country Deleted successfully");
+            else
+                Console.WriteLine("Country is nut found !!");
+        }
         
         static void Main(string[] args)
             {
@@ -144,8 +152,9 @@ namespace PresentationLayer
             //testDataTable();
             //testIsContactExist(20);
             //testFindCountry(1);    
-            //testIsCountryExist(20);
-            testAddNewCountry();
+            //testIsCountryExist(14);
+            //testAddNewCountry();
+            //testDeleteCountry(14);
         }
         } 
     }

@@ -97,6 +97,24 @@ namespace DataLayer
             return CountryID;
         }
 
+        public static bool DeleteCountryByID(int ID)
+        {
+            int rows = 0;
+            SqlConnection conn=new SqlConnection(ConnString.ConnectionString);
+            String Qurry = "Delete Countries where CountryID= @ID ";
+            SqlCommand cmd =new SqlCommand(Qurry ,conn);
+            cmd.Parameters.AddWithValue("ID", ID);
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return (rows > 0);
+        }
     }
 }

@@ -80,6 +80,10 @@ namespace bisnesseLayer
             return false;
         }
 
+        public static bool _DeleteCountry(int ID)
+        {
+            return clsCountriesDataAccess.DeleteCountryByID(ID);
+        }
 
     }
 }
