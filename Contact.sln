@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{68DF00FF-14E7-4DDC-B8E1-D2EE04860E6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{68DF00FF-14E7-4DDC-B8E1-D2EE04860E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bisnesseLayer", "bisnesseLayer\bisnesseLayer.csproj", "{C94F0510-CB81-4506-98C3-AB6E769108E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bisnesseLayer", "bisnesseLayer\bisnesseLayer.csproj", "{C94F0510-CB81-4506-98C3-AB6E769108E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{6F492947-DAB6-4244-8635-74C725AF6A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{6F492947-DAB6-4244-8635-74C725AF6A9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{09CD2784-F1FF-4E9A-8808-D5589AC3A416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6F492947-DAB6-4244-8635-74C725AF6A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F492947-DAB6-4244-8635-74C725AF6A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F492947-DAB6-4244-8635-74C725AF6A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09CD2784-F1FF-4E9A-8808-D5589AC3A416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09CD2784-F1FF-4E9A-8808-D5589AC3A416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09CD2784-F1FF-4E9A-8808-D5589AC3A416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09CD2784-F1FF-4E9A-8808-D5589AC3A416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
