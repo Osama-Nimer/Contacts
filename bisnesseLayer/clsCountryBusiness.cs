@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bisnesseLayer
 {
-    internal class clsCountriesBusiness
+    public class clsCountriesBusiness
     {
         enum enMode
         {
@@ -29,7 +30,7 @@ namespace bisnesseLayer
             Mode = enMode.AddNew;
         }
 
-        public clsCountriesBusiness(int CountryID ,String CountryName ,String Code , String PhoneCode)
+        private clsCountriesBusiness(int CountryID ,String CountryName ,String Code , String PhoneCode)
         {
             this.CountryID = CountryID;
             this.CountryName = CountryName;
@@ -38,8 +39,24 @@ namespace bisnesseLayer
 
             Mode = enMode.Update;
         }
-        /*---------------------------------         Country        ---------------------------------------*/
-        public 
+        
+        public static clsCountriesBusiness _GetConutryByID(int ID) {
+            String CountryName = "";
+            String Code = "";
+            String PhoneCode = "d";
+
+            if (clsCountriesDataAccess.GetCountryByID(ID, ref CountryName, ref Code, ref PhoneCode))
+            {
+                return new clsCountriesBusiness(ID, CountryName, Code, PhoneCode);
+            }
+            else
+                return null;
+        }           
+
+        public static bool _IsExist(int ID)
+        {
+            return clsCountriesDataAccess.IsExist(ID);
+        }
 
     }
 }

@@ -94,15 +94,44 @@ namespace PresentationLayer
                 Console.WriteLine("The Contact Is not Exist");
             
         }
-            static void Main(string[] args)
+
+        /*---------------------------------         Country        ---------------------------------------*/
+        
+        static void testFindCountry(int ID)
+        {
+            clsCountriesBusiness Country = clsCountriesBusiness._GetConutryByID(ID);
+            if (Country != null)
+            {
+                Console.WriteLine($"ID = {Country.CountryID}");
+                Console.WriteLine($"Country Name = {Country.CountryName}");
+                Console.WriteLine($"Code = {Country.Code}");
+                Console.WriteLine($"Phone Code = {Country.PhoneCode}");
+            }
+            else
+                Console.WriteLine("Country is not Found !!");
+        }
+
+        static void testIsCountryExist(int ID)
+        {
+            if (clsCountriesBusiness._IsExist(ID))
+            {
+                Console.WriteLine("The Country Is Exist ");
+            }
+            else
+                Console.WriteLine("The Country Is not Exist !! ");
+        }
+        
+        static void Main(string[] args)
             {
             //testFindContact(2);
             //testAddNewContact();
             //testUpdateContact(2);
             //testDeleteContact(8);
             //testDataTable();
-            testIsContactExist(20);
-            }
+            //testIsContactExist(20);
+            //testFindCountry(1);    
+            testIsCountryExist(20);
+        }
         } 
     }
 

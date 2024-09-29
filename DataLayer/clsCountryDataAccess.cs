@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    class clsCountriesDataAccess
+    public class clsCountriesDataAccess
     {
-        public static bool GetAllCountries(int CountryID, ref String CountryName, ref String Code, String PhoneCode)
+        public static bool GetCountryByID(int CountryID, ref String CountryName, ref String Code, ref String PhoneCode)
         {
             bool isFound =false;
             SqlConnection conn = new SqlConnection(ConnString.ConnectionString);
-            String Query = "select CountryID from Countries where CountryID = @ID";
+            String Query = "select * from Countries where CountryID = @ID";
             SqlCommand cmd = new SqlCommand(Query, conn);
             cmd.Parameters.AddWithValue("ID", CountryID);
             try
@@ -23,6 +23,7 @@ namespace DataLayer
                 if (reader.Read())
                 {
                     isFound = true;
+
                     CountryName = (String)reader["CountryName"];
                     Code = Convert.ToString(reader["Code"]);
                     PhoneCode = Convert.ToString(reader["PhoneCode"]);
