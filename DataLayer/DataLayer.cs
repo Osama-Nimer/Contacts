@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Numerics;
 namespace DataLayer
 {
-    public class clsDataLayer
+    public class clsContactDataLayer
     {
         public static bool GetContactById(int Id , ref String FirstName, ref String LastName, ref String Email, ref String Phone, ref String Address
             , ref DateTime BirthDate, ref String ImagePath, ref int CountryId)

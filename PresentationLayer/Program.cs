@@ -9,7 +9,7 @@ namespace PresentationLayer
 
         static void testFindContact(int ID)
         {
-            clsbisnesseLayer c = clsbisnesseLayer.Find(ID);
+            clsContactBisnesseLayer c = clsContactBisnesseLayer.Find(ID);
             if (c != null)
             {
                 Console.WriteLine(c.ID);
@@ -25,8 +25,8 @@ namespace PresentationLayer
         }
 
         static void testAddNewContact() 
-        { 
-            clsbisnesseLayer contact = new clsbisnesseLayer();
+        {
+            clsContactBisnesseLayer contact = new clsContactBisnesseLayer();
             contact.FirstName = "Osama";
             contact.LastName = "Nimer";
             contact.Email = "osamafares23@yahoo.com";
@@ -46,7 +46,7 @@ namespace PresentationLayer
 
         static void testUpdateContact(int id) 
         {
-            clsbisnesseLayer newContact = clsbisnesseLayer.Find(id);
+            clsContactBisnesseLayer newContact = clsContactBisnesseLayer.Find(id);
             if (newContact != null)
             {
                 newContact.FirstName = "Osama";
@@ -71,14 +71,14 @@ namespace PresentationLayer
 
         static void testDeleteContact(int id)
         {
-            if (clsbisnesseLayer._DeleteContact(id))
+            if (clsContactBisnesseLayer._DeleteContact(id))
                 Console.WriteLine("Contact Deleted Successfully");
             else Console.WriteLine("Contact not Found");
         }
 
         static void testDataTable()
         {
-            DataTable dt = clsbisnesseLayer.GetAllContacts();
+            DataTable dt = clsContactBisnesseLayer.GetAllContacts();
             Console.WriteLine("Contacts Data");
             foreach (DataRow row in dt.Rows)
             {
@@ -88,7 +88,7 @@ namespace PresentationLayer
 
         static void testIsContactExist(int id)
         {
-            if (clsbisnesseLayer.IsExist(id))
+            if (clsContactBisnesseLayer.IsExist(id))
                 Console.WriteLine("The Contact Is Exist");
             else
                 Console.WriteLine("The Contact Is not Exist");

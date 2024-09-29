@@ -3,7 +3,7 @@ using System.Data;
 using DataLayer;
 namespace bisnesseLayer
 {
-    public class clsbisnesseLayer
+    public class clsContactBisnesseLayer
     {
         public enum enMode
         {
@@ -23,7 +23,7 @@ namespace bisnesseLayer
         public String ImagePath{ get; set; }
         public int CountryID { get; set; }
 
-        public clsbisnesseLayer()
+        public clsContactBisnesseLayer()
         {
             ID = -1;
             FirstName = "";
@@ -36,7 +36,7 @@ namespace bisnesseLayer
             CountryID = -1;
             Mode = enMode.Addnew;
         }
-        private clsbisnesseLayer(int id , String FirstName ,String LastName , String Email ,String Phone ,String Address
+        private clsContactBisnesseLayer(int id , String FirstName ,String LastName , String Email ,String Phone ,String Address
             , DateTime BirthDate , String ImagePath ,int CountryId )
         {
             this.ID = id;
@@ -51,16 +51,16 @@ namespace bisnesseLayer
             Mode = enMode.Update;
         }
 
-        public static clsbisnesseLayer Find(int id)
+        public static clsContactBisnesseLayer Find(int id)
         {
             String FirstName = "", LastName = "", Email = "", Phone = "", Address = ""
             , ImagePath = "";
             int CountryId = -1;
             DateTime BirthDate = DateTime.Now;
-            if (clsDataLayer.GetContactById(id, ref FirstName, ref LastName, ref Email, ref Phone, ref Address
+            if (clsContactDataLayer.GetContactById(id, ref FirstName, ref LastName, ref Email, ref Phone, ref Address
                 , ref BirthDate, ref ImagePath, ref CountryId))
             {
-                return new clsbisnesseLayer(id, FirstName, LastName, Email, Phone, Address
+                return new clsContactBisnesseLayer(id, FirstName, LastName, Email, Phone, Address
                     , BirthDate, ImagePath, CountryId);
             }   
             else
@@ -70,20 +70,20 @@ namespace bisnesseLayer
 
         private bool _AddNewContact()
         {
-            this.ID = clsDataLayer.AddNewContact(this.FirstName, this.LastName, this.Email, this.Phone,
+            this.ID = clsContactDataLayer.AddNewContact(this.FirstName, this.LastName, this.Email, this.Phone,
                 this.Address, this.ImagePath, this.BirthDate , this.CountryID);
             return (this.ID != -1);
         }
 
         private bool _UpdateContact()
         {
-            return clsDataLayer.UpdateContact(this.ID, this.FirstName, this.LastName, this.Email, this.Phone,
+            return clsContactDataLayer.UpdateContact(this.ID, this.FirstName, this.LastName, this.Email, this.Phone,
                 this.Address, this.BirthDate,  this.ImagePath ,this.CountryID);
         }
 
         public static bool _DeleteContact(int id) 
         {
-            return clsDataLayer.DeleteContact(id);
+            return clsContactDataLayer.DeleteContact(id);
         }
 
         public bool Save()
@@ -113,11 +113,11 @@ namespace bisnesseLayer
 
         public static DataTable GetAllContacts()
         {
-            return clsDataLayer.GetAllContact();
+            return clsContactDataLayer.GetAllContact();
         }
 
         public static bool IsExist(int id) {
-            return clsDataLayer.IsExist(id);
+            return clsContactDataLayer.IsExist(id);
         }
     }
 }
