@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -73,8 +74,8 @@ namespace bisnesseLayer
                         return true;
                     else 
                         return false;
-                //case  enMode.Update :
-                //    return _UpdateCountry();
+                case  enMode.Update :
+                    return _UpdateCountry();
                         
             }
             return false;
@@ -85,5 +86,14 @@ namespace bisnesseLayer
             return clsCountriesDataAccess.DeleteCountryByID(ID);
         }
 
+        public  bool _UpdateCountry()
+        {
+            return clsCountriesDataAccess.UpdateCountryByID(this.CountryID, this.CountryName, this.Code, this.PhoneCode);
+        }
+
+        public static DataTable _GetAllCountries()
+        {
+            return  clsCountriesDataAccess.GetAllCountries();
+        }
     }
 }

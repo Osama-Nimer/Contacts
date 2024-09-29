@@ -24,27 +24,27 @@ namespace PresentationLayer
             }
         }
 
-        static void testAddNewContact() 
+        static void testAddNewContact()
         {
             clsContactBisnesseLayer contact = new clsContactBisnesseLayer();
             contact.FirstName = "Osama";
             contact.LastName = "Nimer";
             contact.Email = "osamafares23@yahoo.com";
             contact.Phone = "0782536729";
-            contact.Address= "jawa";
-            contact.BirthDate= new DateTime(2004,01,27,10,30,0);
+            contact.Address = "jawa";
+            contact.BirthDate = new DateTime(2004, 01, 27, 10, 30, 0);
             contact.CountryID = 2;
-            contact.ImagePath= "C:osama.jpg";
+            contact.ImagePath = "C:osama.jpg";
 
             if (contact.Save())
             {
-                Console.WriteLine("Contact Added Successfully by ID = "+contact.ID);
+                Console.WriteLine("Contact Added Successfully by ID = " + contact.ID);
             }
 
 
         }
 
-        static void testUpdateContact(int id) 
+        static void testUpdateContact(int id)
         {
             clsContactBisnesseLayer newContact = clsContactBisnesseLayer.Find(id);
             if (newContact != null)
@@ -54,18 +54,18 @@ namespace PresentationLayer
                 newContact.Email = "qqqq@gmail.com";
                 newContact.Phone = "111111";
                 newContact.Address = "dfgh";
-                newContact.BirthDate= DateTime.Now;
+                newContact.BirthDate = DateTime.Now;
                 newContact.CountryID = 2;
                 newContact.ImagePath = "wertyui";
-                
+
                 if (newContact.Save())
                 {
                     Console.WriteLine("Contact Updated Successfuly");
                 }
-                
+
             }
             else
-                    Console.WriteLine("Not Found");
+                Console.WriteLine("Not Found");
 
         }
 
@@ -92,11 +92,11 @@ namespace PresentationLayer
                 Console.WriteLine("The Contact Is Exist");
             else
                 Console.WriteLine("The Contact Is not Exist");
-            
+
         }
 
         /*---------------------------------         Country        ---------------------------------------*/
-        
+
         static void testFindCountry(int ID)
         {
             clsCountriesBusiness Country = clsCountriesBusiness._GetConutryByID(ID);
@@ -130,7 +130,7 @@ namespace PresentationLayer
                 PhoneCode = "962",
             };
 
-            if(country._Save())
+            if (country._Save())
                 Console.WriteLine($"Country Added Successfully by ID = {country.CountryID}");
 
         }
@@ -142,20 +142,60 @@ namespace PresentationLayer
             else
                 Console.WriteLine("Country is nut found !!");
         }
-        
-        static void Main(string[] args)
+
+        static void testUpdateCountry(int ID)
+        {
+            clsCountriesBusiness country = clsCountriesBusiness._GetConutryByID(ID);
+            if (country != null)
             {
-            //testFindContact(2);
-            //testAddNewContact();
-            //testUpdateContact(2);
-            //testDeleteContact(8);
-            //testDataTable();
-            //testIsContactExist(20);
-            //testFindCountry(1);    
-            //testIsCountryExist(14);
-            //testAddNewCountry();
-            //testDeleteCountry(14);
+                country.CountryName = "Jordan";
+                country.Code = "JO";
+                country.PhoneCode = "962";
+
+                if (country._Save())
+                    Console.WriteLine("Country Updated Successfully");
+            }
+            else
+                Console.WriteLine("Country is not Found !! ");
         }
-        } 
+
+        static void testGetAllCountries()
+        {
+            DataTable dt = clsCountriesBusiness._GetAllCountries();
+            Console.WriteLine("Country Data");
+            foreach (DataRow row in dt.Rows)
+            {
+                Console.WriteLine($"{row["CountryID"]} , {row["CountryID"]} ,{row["Code"]} ,{row["PhoneCode"]}");
+            }
+        }
+            static void Main(string[] args)
+            {
+                //testFindContact(2);
+
+                //testAddNewContact();
+
+                //testUpdateContact(2);
+
+                //testDeleteContact(8);
+
+                //testDataTable();
+
+                //testIsContactExist(20);
+
+                //testFindCountry(1);
+                
+                //testIsCountryExist(14);
+
+                //testAddNewCountry();
+
+                //testDeleteCountry(14);
+
+                //testUpdateCountry(7);
+
+                //testGetAllCountries();
+            }
+        }
     }
+
+
 
