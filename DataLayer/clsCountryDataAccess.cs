@@ -67,5 +67,36 @@ namespace DataLayer
             return IsExist;
 
         }
+
+        public static int AddNewCountry(String CountryName, String Code , String PhoneCode)
+        {
+            int CountryID = -1;
+            SqlConnection connection = new SqlConnection(ConnString.ConnectionString);
+            String Query = "Insert into Countries (CountryName , Code , PhoneCode )" +
+                "values(@CountryName ,@Code,@PhoneCode);" +
+                "Select SCOPE_IDENTITY();";
+            
+            SqlCommand command = new SqlCommand(Query ,connection);
+            command.Parameters.AddWithValue ("@CountryName", CountryName);
+            command.Parameters.AddWithValue ("@Code", Code);
+            command.Parameters.AddWithValue ("@phoneCode", PhoneCode);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if(result != null && int.TryParse(result.ToString(), out int InsertedID))
+                    CountryID = InsertedID;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message) ;
+            }
+            finally { connection.Close(); }
+            Console.WriteLine(CountryID);
+            return CountryID;
+        }
+
+
     }
 }

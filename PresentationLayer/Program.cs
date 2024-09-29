@@ -120,6 +120,20 @@ namespace PresentationLayer
             else
                 Console.WriteLine("The Country Is not Exist !! ");
         }
+
+        static void testAddNewCountry()
+        {
+            clsCountriesBusiness country = new clsCountriesBusiness()
+            {
+                CountryName = "Jordan",
+                Code = "962",
+                PhoneCode = "962",
+            };
+
+            if(country._Save())
+                Console.WriteLine($"Country Added Successfully by ID = {country.CountryID}");
+
+        }
         
         static void Main(string[] args)
             {
@@ -130,7 +144,8 @@ namespace PresentationLayer
             //testDataTable();
             //testIsContactExist(20);
             //testFindCountry(1);    
-            testIsCountryExist(20);
+            //testIsCountryExist(20);
+            testAddNewCountry();
         }
         } 
     }

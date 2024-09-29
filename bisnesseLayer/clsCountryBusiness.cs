@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,6 +58,28 @@ namespace bisnesseLayer
         {
             return clsCountriesDataAccess.IsExist(ID);
         }
+
+        private bool _AddNewCountry(String CountryName, String Code, String PhoneCode)
+        {
+            this.CountryID = clsCountriesDataAccess.AddNewCountry(this.CountryName,this.Code, this.PhoneCode);
+            return (this.CountryID != -1);
+        }
+
+        public  bool _Save()
+        {
+            switch (Mode) {
+                case  enMode.AddNew :
+                    if (_AddNewCountry(this.CountryName, this.Code, this.PhoneCode))
+                        return true;
+                    else 
+                        return false;
+                //case  enMode.Update :
+                //    return _UpdateCountry();
+                        
+            }
+            return false;
+        }
+
 
     }
 }
